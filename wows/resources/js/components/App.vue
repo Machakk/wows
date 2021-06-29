@@ -4,7 +4,7 @@
            <!-- {{data.data[numero].images.small}} -->
         </div>
     
-   {{this.data222.data}}
+   {{this.data222.data | [1]}}
 
     <div class="container m-3">
         <div class="row m-3">
@@ -13,6 +13,9 @@
                 </div>
                 <div class="form-group col-3 my-3">
                     <input type="text" v-model="form.nick" class="form-control" name="nick" >
+                </div>
+                 <div class="form-group col-3 my-3">
+                    <input type="text" v-model="form.id" class="form-control" name="id" >
                 </div>
         </div>
 
@@ -37,6 +40,7 @@
     </div>
   
 </template>
+
 <script>
 const default_layout = "default";
 
@@ -56,6 +60,7 @@ export default {
 
             form: {
                 nick:'',
+                id:''
             },
 
             account_id : '', 

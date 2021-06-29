@@ -15,8 +15,16 @@
     <title>{{env('APP_NAME')}}</title>
 </head>
 <body>
-    <div id="app">
-        <app-cal></app-cal>
+    <div id="milan" class="container">
+        <div class="row" >
+            <app-cal></app-cal>
+        </div>
+        
+
+        <div class="row ">
+            <ships></ships>
+        </div>
+
 
     
     </div>

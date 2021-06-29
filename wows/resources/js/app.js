@@ -4,10 +4,14 @@ require('./bootstrap');
 import Vue from "vue"
 
 import AppCal from './components/App.vue'
+import Ships from './components/Ships.vue'
 
 const app = new Vue({
-    el: '#app',
-    components: { AppCal }
+    el: '#milan',
+    components: { 
+        AppCal ,
+        Ships,
+    }
 
 
 });
