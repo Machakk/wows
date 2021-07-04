@@ -2096,28 +2096,91 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var default_layout = "default";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Ships",
-  // https://api.worldofwarships.eu/wows/encyclopedia/ships/?application_id=8865e3a6ee278e7ab15861da4c08c372&fields=name
   data: function data() {
     return {
       milan: 'hi sawsan',
       ships: '',
-      application_id: '8865e3a6ee278e7ab15861da4c08c372'
+      application_id: '8865e3a6ee278e7ab15861da4c08c372',
+      shipId: '',
+      form: {
+        shipid: ''
+      },
+      upgrades: '',
+      up1: this.dis,
+      nas_obj: this.det
     };
+  },
+  props: {
+    dis: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    det: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
   },
   // on peut affichier plusieurs fields avec %2C+
   // https://api.worldofwarships.eu/wows/encyclopedia/ships/?application_id=8865e3a6ee278e7ab15861da4c08c372&fields=name%2C+nation&nation=japan
   methods: {
-    getShips: function getShips() {
+    getPlayer: function getPlayer() {
       var _this = this;
 
-      console.log(this.application_id); // let application_id = '8865e3a6ee278e7ab15861da4c08c372'
-
-      fetch(" https://api.worldofwarships.eu/wows/encyclopedia/ships/?application_id=" + this.application_id + "&fields=name&nation=france&type=battleship").then( /*#__PURE__*/function () {
+      this.nas_obj = {
+        'someName': 'player',
+        'pom_obj': {},
+        'obj2': {},
+        'brojGodina': 1996,
+        "myObj": function myObj() {
+          console.log(this.someName);
+          var num = 58 * 58 * 78;
+          console.log(num);
+        }
+      };
+      fetch("https://api.worldofwarships.eu/wows/account/list/?application_id=8865e3a6ee278e7ab15861da4c08c372&search=62305").then( /*#__PURE__*/function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(response) {
-          var data, error;
+          var data;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
@@ -2127,21 +2190,13 @@ var default_layout = "default";
 
                 case 2:
                   data = _context.sent;
+                  _this.nas_obj.pom_obj = data;
+                  console.log(_this.nas_obj);
+                  console.log(_this.nas_obj.pom_obj.data[0].account_id); //id
 
-                  if (response.ok) {
-                    _context.next = 6;
-                    break;
-                  }
+                  console.log(_this.nas_obj.myObj());
 
-                  // get error message from body or default to response statusText
-                  error = data && data.message || response.statusText;
-                  return _context.abrupt("return", Promise.reject(error));
-
-                case 6:
-                  _this.ships = data;
-                  return _context.abrupt("return", _this.ships);
-
-                case 8:
+                case 7:
                 case "end":
                   return _context.stop();
               }
@@ -2152,11 +2207,182 @@ var default_layout = "default";
         return function (_x) {
           return _ref.apply(this, arguments);
         };
+      }());
+    },
+    getShips: function getShips() {
+      var _this2 = this;
+
+      // let application_id = '8865e3a6ee278e7ab15861da4c08c372'
+      fetch(" https://api.worldofwarships.eu/wows/encyclopedia/ships/?application_id=8865e3a6ee278e7ab15861da4c08c372&fields").then( /*#__PURE__*/function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(response) {
+          var data, error;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return response.json();
+
+                case 2:
+                  data = _context2.sent;
+
+                  if (response.ok) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  // get error message from body or default to response statusText
+                  error = data && data.message || response.statusText;
+                  return _context2.abrupt("return", Promise.reject(error));
+
+                case 6:
+                  _this2.shipId = data;
+                  console.log(data);
+                  return _context2.abrupt("return", _this2.shipId);
+
+                case 9:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref2.apply(this, arguments);
+        };
       }())["catch"](function (error) {
-        _this.errorMessage = error;
+        _this2.errorMessage = error;
         console.error("There was an error!", error);
       });
-    }
+    },
+    chercheShip: function chercheShip() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var objek_koji_skladisti_4_fech_objkata, result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                objek_koji_skladisti_4_fech_objkata = {};
+                _context3.next = 3;
+                return _this3.getShipById(_this3.form.shipid);
+
+              case 3:
+                result = _context3.sent;
+
+                // this.getUpgrades();
+                _this3.getPlayer();
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    getShipById: function getShipById(id) {
+      var _this4 = this;
+
+      var application_id = '8865e3a6ee278e7ab15861da4c08c372';
+      return fetch("https://api.worldofwarships.com/wows/encyclopedia/ships/?application_id=" + application_id + "&ship_id=" + id).then( /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(response) {
+          var data, error;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return response.json();
+
+                case 2:
+                  data = _context4.sent;
+
+                  if (response.ok) {
+                    _context4.next = 6;
+                    break;
+                  }
+
+                  // get error message from body or default to response statusText
+                  error = data && data.message || response.statusText;
+                  return _context4.abrupt("return", Promise.reject(error));
+
+                case 6:
+                  //this.shipId = data.data;
+                  _this4.shipId = Object.values(data.data);
+                  console.log(_this4.shipId[0]);
+                  _this4.upgrades = _this4.shipId[0].upgrades;
+                  console.log(_this4.upgrades);
+                  return _context4.abrupt("return", _this4.shipId);
+
+                case 11:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x3) {
+          return _ref3.apply(this, arguments);
+        };
+      }())["catch"](function (error) {
+        _this4.errorMessage = error;
+        console.error("There was an error!", error);
+      });
+    },
+    getUpgrades: function getUpgrades() {
+      var _this5 = this;
+
+      var application_id = '8865e3a6ee278e7ab15861da4c08c372';
+
+      for (var i = 0; i < this.upgrades.length; i++) {
+        console.log(this.upgrades[i]);
+        fetch("https://api.worldofwarships.eu/wows/encyclopedia/consumables/?application_id=" + application_id + "&consumable_id=" + this.upgrades[i]).then( /*#__PURE__*/function () {
+          var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(response) {
+            var data, error, up2;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    _context5.next = 2;
+                    return response.json();
+
+                  case 2:
+                    data = _context5.sent;
+
+                    if (response.ok) {
+                      _context5.next = 6;
+                      break;
+                    }
+
+                    // get error message from body or default to response statusText
+                    error = data && data.message || response.statusText;
+                    return _context5.abrupt("return", Promise.reject(error));
+
+                  case 6:
+                    up2 = _this5.up1.push(data.data);
+
+                  case 7:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5);
+          }));
+
+          return function (_x4) {
+            return _ref4.apply(this, arguments);
+          };
+        }())["catch"](function (error) {
+          _this5.errorMessage = error;
+          console.error("There was an error!", error);
+        });
+      }
+    } // for tableau fetch 
+
   }
 });
 
@@ -20688,10 +20914,91 @@ var render = function() {
       _c("div", { staticClass: "col-5" }, [
         _vm._v("\n            " + _vm._s(this.ships.data) + "\n        ")
       ])
+    ]),
+    _vm._v(" "),
+    this.shipId.length > 0
+      ? _c("div", [
+          _vm._v("\n        " + _vm._s(this.shipId[0].upgrades) + "\n        "),
+          _vm._m(0)
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    this.nas_obj.pom_obj != null
+      ? _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-5" }, [
+            _vm._v(
+              "\n            " +
+                _vm._s(this.nas_obj.pom_obj.data) +
+                "\n        "
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v("\n\n    " + _vm._s(this.up1) + "\n    \n\n    "),
+    _c("div", { staticClass: "container m-3" }, [
+      _c("div", { staticClass: "row m-3" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-3 my-3" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.shipid,
+                expression: "form.shipid"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "nick" },
+            domProps: { value: _vm.form.shipid },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "shipid", $event.target.value)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-9 offset-3" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.chercheShip()
+                }
+              }
+            },
+            [_vm._v("\n                    cherche \n            ")]
+          )
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("br")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-3 m-3" }, [
+      _c("label", { attrs: { for: "" } }, [_vm._v(" Ship ID STPP ")])
+    ])
+  }
+]
 render._withStripped = true
 
 
